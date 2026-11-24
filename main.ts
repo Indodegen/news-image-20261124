@@ -1,22 +1,17 @@
-// news-image-20261124 entry (Node 22, standard library only).
+// The World in One Day — Tuesday, 24 November 2026
+// make.fun bounty: news-image-20261124
+// "Sum up 24 November's world news in one image"
 //
-// The entry image sits beside this file as entry.png, and this program
-// copies it to /output/entry.png. The image is a 1024x1024 newspaper
-// front page summing up the world news of Tuesday 24 November 2026; it
-// was drawn by generate.py (Pillow + Liberation fonts, deterministic,
-// no network, no timestamps) from that day's wires, and running the
-// generator twice writes byte-identical PNGs. The gate takes a whole
-// PNG of at most 1 MiB and 1024 by 1024 pixels, and the judge sees
-// exactly the bytes copied here.
-//
-// Outside the grader's container, MAKEFUN_OUTPUT_DIR stands in for
-// /output:
-//   mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
+// Copies the generated entry.png (drawn by generate.py) into the output
+// directory the harness provides. Node 22, standard library only.
 
-import { copyFileSync, mkdirSync } from 'node:fs';
-import { join } from 'node:path';
+import { copyFileSync, mkdirSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
+const here = dirname(fileURLToPath(import.meta.url));
+const source = join(here, "entry.png");
+const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
 mkdirSync(outDir, { recursive: true });
-copyFileSync(new URL('./entry.png', import.meta.url),
-  join(outDir, 'entry.png'));
+copyFileSync(source, join(outDir, "entry.png"));
+console.log(`Copied entry.png to ${outDir}`);

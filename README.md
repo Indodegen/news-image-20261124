@@ -1,35 +1,40 @@
-# The World in One Day — 24 November 2026
+# The World in One Day — Tuesday, 24 November 2026
 
 [![news-image-20261124](https://make.fun/badge/news-image-20261124.svg)](https://make.fun/bounty/news-image-20261124)
 [![rank](https://make.fun/badge/news-image-20261124/Indodegen/news-image-20261124/rank.svg)](https://make.fun/bounty/news-image-20261124)
 [![reward](https://make.fun/badge/news-image-20261124/Indodegen/news-image-20261124/reward.svg)](https://make.fun/bounty/news-image-20261124)
 
-A 1024×1024 newspaper front page summing up the world news of **Tuesday 24 November 2026** — 40 stories from 6 regions, drawn entirely in code.
+A single 1024×1024 newspaper front page that sums up 24 November 2026 world
+news in one image: 40 stories from 6 regions, drawn with Python Pillow.
 
-## The leads
+Lead stories: Nvidia reinstates Jensen Huang as chief executive after Trump
+intervenes and Asian chip stocks soar; fourteen nations affirm the ICJ
+genocide ruling against Myanmar; and the COP31 climate talks in Antalya
+collapse without a deal after some 50 hours of overtime.
 
-1. **Nvidia** — Jensen Huang is reinstated as chief executive after Trump intervenes; Asian stocks soar (Seoul +6%, Nikkei +3.9%, Taiwan +9%).
-2. **Myanmar** — Fourteen countries affirm the ICJ ruling that Myanmar committed genocide against the Rohingya; the UK sanctions Myanmar generals; Malaysia moves to return Rohingya refugees.
-3. **COP31** — The climate talks in Antalya collapse without a deal after ~50 hours of overtime; 90+ nations rejected a draft that never said "fossil fuels".
-
-Plus 10 featured stories (the Merkury sinking off Libya, Medvedev's nuclear warning, Estonia's border warning, strikes in Ukraine, Gaza, US measles, the $41bn Sanofi–Insmed deal, the Grok lawsuits, the Solomon Islands, and Iran/Hormuz) and 27 more in a numbered list — with a **DATE CHECK** box naming what was left out because it belongs to an earlier day (the COP31 collapse itself, late 23 Nov; the ICJ ruling, 19 Nov; the Merkury sinking, 23 Nov; Russian missiles in Poland, 20 Nov; the Democrats' midterm majorities, 3 Nov).
+Below the leads, ten featured stories and 27 more one-line stories cover
+Ukraine, Gaza, measles in the US, Sanofi's $41bn Insmed deal, the Solomon
+Islands' China pact, and more — plus a dot-map of the world and a "Date
+Check" box that keeps earlier days' news (the 19 Nov ICJ ruling, the
+23 Nov COP31 collapse and Merkury sinking) clearly dated.
 
 ## How it works
 
-`generate.py` draws the whole front page with Pillow and Liberation fonts: masthead, stats strip, region bar, 3 lead cards, 10 featured cards, a world dot-map, the 27-story list, and the date-check box. Every scene is drawn from flat PIL shapes — no photos, no AI images, no network, no randomness, no timestamps. Running it twice writes a byte-identical PNG.
-
-`main.ts` (Node 22, standard library only) copies `entry.png` beside it to `/output/entry.png` (or `$MAKEFUN_OUTPUT_DIR`), resolving the path via `import.meta.url` so it works from any working directory.
+`generate.py` draws the whole front page deterministically — no network,
+no randomness, no timestamps, so two runs produce byte-identical PNGs.
+`main.ts` copies the finished `entry.png` into the output directory.
 
 ## Run it
 
-```sh
-python3 generate.py entry.png   # draw the front page
-node main.ts                     # copy it to /output/entry.png
+```bash
+python3 generate.py entry.png
+MAKEFUN_OUTPUT_DIR=/output node main.ts
 ```
 
 ## Sources
 
-Reuters · AP · CNN · Le Monde · Al Jazeera · France24
+Reuters, AP, CNN, Al Jazeera, France24, Le Monde and other wires that
+carried these stories on Tuesday 24 November 2026.
 
 ## License
 
